@@ -8,7 +8,9 @@ COPY ./config ./config
 COPY ./adam.json ./adam.json
 #RUN ls -la ./node_modules/
 RUN npm i --unsafe-perm
-RUN npm i typescript
+# +frankG added -g flag below to avoid a permission error
+#  on build
+RUN npm i -g typescript
 #RUN ls -la ./node_modules/chaoscraft-shared
 RUN node ./node_modules/typescript/bin/tsc
 RUN npm uninstall typescript
